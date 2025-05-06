@@ -1,3 +1,33 @@
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault(); // prevent form from submitting normally
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !email || !message) {
+    alert('Please fill out all fields.');
+    return;
+  }
+
+  // Simple email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  // If all is valid, show success message
+  document.getElementById('successMessage').classList.remove('hidden');
+
+  // Optionally, clear the form
+  document.getElementById('contactForm').reset();
+});
+
+
+
+
+
 document.removeEventListener("fullscreenchange", fullScreenChangeHandler);
 document.removeEventListener("webkitfullscreenchange", fullScreenChangeHandler);
 document.removeEventListener("mozfullscreenchange", fullScreenChangeHandler);
